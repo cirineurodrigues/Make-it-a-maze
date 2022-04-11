@@ -1,24 +1,53 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
 
-module.exports = {
-  mode: "development",
-  entry: "js/main.js",
+const config = {
+  entry: "./js/main.js",
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "script.js",
+    filename: "main.js",
+    path: path.resolve(__dirname, "./dist"),
+  },
+  mode: "development",
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "./dist"),
+    },
+    hot: true,
+    compress: true,
+    port: 8080,
   },
   module: {
     rules: [
       {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
+        test: /\.(sa|sc|c)ss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: false,
+            },
           },
-        },
+        ],
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: "./index.html",
+    }),
+    new ESLintPlugin(),
+  ],
 };
+
+module.exports = config;
