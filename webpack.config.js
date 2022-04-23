@@ -1,41 +1,33 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ESLintPlugin = require("eslint-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
-  entry: "./js/main.js",
+  entry: './js/main.js',
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "./dist"),
+    filename: 'main.js',
+    path: path.resolve(__dirname, './dist'),
   },
-  mode: "development",
+  mode: 'development',
   devServer: {
-    static: {
-      directory: path.join(__dirname, "./dist"),
-    },
-    hot: true,
-    compress: true,
+    static: path.join(__dirname, './dist'),
     port: 8080,
   },
   module: {
     rules: [
       {
-        test: /\.(sa|sc|c)ss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        test: /\.s[ac]ss$/i,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
       },
       {
-        test: /\.(png|jpg|gif)$/i,
+        test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
-            loader: "url-loader",
-            options: {
-              limit: false,
-            },
+            loader: 'file-loader',
           },
         ],
       },
@@ -43,10 +35,9 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: "./index.html",
+      filename: 'index.html',
+      template: './index.html',
     }),
-    new ESLintPlugin(),
   ],
 };
 
