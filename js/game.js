@@ -5,8 +5,8 @@ const ctx = canvas.getContext('2d');
 
 export default class Game {
   constructor() {
-    this.width = 640;
-    this.height = 480;
+    this.width = 500;
+    this.height = 500;
     canvas.width = this.width;
     canvas.height = this.height;
     this.player = new Player();
