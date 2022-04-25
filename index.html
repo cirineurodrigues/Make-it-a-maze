@@ -6,14 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--Title-->
-    <title>Make it a maze</title>
+    <title>Amdocs | make it a maze</title>
     <!--Fonts-->
+    <link
+      href="//db.onlinewebfonts.com/c/01d273202731e44f0f1187f3afcaf156?family=Mark+Pro"
+      rel="stylesheet"
+      type="text/css"
+    />
     <!--Style-->
-    <!-- <link rel="stylesheet" href="css/style.css" /> -->
   </head>
   <body>
     <div id="root">
-      <canvas id="mia-canvas"></canvas>
+      <div class="main-container">
+        <header class="main-header">
+          <img src="amdocs-logo.png" alt="Amdocs" class="header-image" />
+          <h1 class="header-title">Make it a maze</h1>
+        </header>
+        <main class="main-board">
+          <section id="board" class="board-game">
+            <canvas id="mia-canvas"></canvas>
+          </section>
+          <aside class="board-commands">
+            <div class="commands-controllers"></div>
+            <div class="commands-history">
+              <div class="commands-selected"></div>
+              <button class="commands-button">Amazing!</button>
+            </div>
+          </aside>
+        </main>
+      </div>
     </div>
     <script src="js/main.js"></script>
   </body>
