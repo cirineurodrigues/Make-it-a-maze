@@ -32,17 +32,17 @@ function drawMap(m) {
     for (j = 0; j < m[i].length; j++) {
       if (m[i][j] === 1) {
         context.beginPath();
-        //context.fillStyle = "#000000";
-       //context.fillRect(j * titleSize, i * titleSize, titleSize, titleSize);
-        context.drawImage(leaf, j * titleSize, i * titleSize, titleSize, titleSize);
+        context.fillStyle = "#000000";
+        context.fillRect(j * titleSize, i * titleSize, titleSize, titleSize);
+        //context.drawImage(leaf, j * titleSize, i * titleSize, titleSize, titleSize);
       } else if (m[i][j] === 2) {
         context.beginPath();
         context.fillStyle = "#00ff00";
         context.fillRect(j * titleSize, i * titleSize, titleSize, titleSize);
-      } else {
-        context.beginPath();
-        context.drawImage(pavement, j * titleSize, i * titleSize, titleSize, titleSize);
-      }
+      } //else {
+        //context.beginPath();
+        //context.drawImage(pavement, j * titleSize, i * titleSize, titleSize, titleSize);
+      //}
 
       collBox[i].push({
         x: j * titleSize,
