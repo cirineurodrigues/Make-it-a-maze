@@ -1,4 +1,4 @@
-import image1 from '../image/imageLeaf'
+/* import image1 from '../image/imageLeaf'
 import image2 from '../image/imageDirt'
 
 let canvas = document.getElementById("canvas");
@@ -127,3 +127,4 @@ window.onload = function () {
   drawMap(map);
   drawPlayer(0, 0);
 };
+ */

@@ -1,4 +1,13 @@
 {
   "parser": "@babel/eslint-parser",
-  "extends": ["airbnb-base"]
+  "extends": ["airbnb-base"],
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "es6": true
+  },
+  "rules": {
+    "no-console": 0,
+    "linebreak-style": ["error", "windows"]
+  }
 }
