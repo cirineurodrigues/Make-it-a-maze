@@ -1,52 +1,48 @@
-import image1 from '../image/imageRock1.jpg'
-import image2 from '../image/imageDirt.jpg'
-import '../scss/styles.scss';
-/* import Game from './game'; */
+/* import image1 from '../image/imageLeaf'
+import image2 from '../image/imageDirt'
 
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
 let titleSize = 50;
 
 let map = [
-  [1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
-  [1, 0, 0, 0, 1, 0, 0, 0, 0, 2],
-  [1, 0, 1, 0, 1, 0, 1, 1, 0, 1],
-  [1, 0, 1, 0, 1, 0, 0, 1, 0, 1],
-  [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
-  [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-  [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
-  [1, 0, 1, 0, 0, 0, 0, 1, 0, 1],
-  [1, 0, 0, 0, 1, 1, 0, 0, 0, 1],
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 2],
+  [0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0],
+  [0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0],
+  [0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
+  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+  [1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0],
+  [1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0],
 ];
 
 let collBox = [];
 let mapLength = map[0].length;
 let mapHeight = map.length;
 
-let leaf = new Image(50, 50);
+let leaf = new Image();
 leaf.src = image1;
 
-let pavement = new Image(50, 50);
+let pavement = new Image();
 pavement.src = image2;
 
 function drawMap(m) {
-  for (let i = 0; i < m.length; i++) {
+  for (i = 0; i < m.length; i++) {
     collBox.push([]);
-    for (let j = 0; j < m[i].length; j++) {
+    for (j = 0; j < m[i].length; j++) {
       if (m[i][j] === 1) {
         context.beginPath();
-        //context.fillStyle = "#000000";
-        //context.fillRect(j * titleSize, i * titleSize, titleSize, titleSize);
-        context.drawImage(leaf, j * titleSize, i * titleSize, titleSize, titleSize);
+        context.fillStyle = "#000000";
+        context.fillRect(j * titleSize, i * titleSize, titleSize, titleSize);
+        //context.drawImage(leaf, j * titleSize, i * titleSize, titleSize, titleSize);
       } else if (m[i][j] === 2) {
         context.beginPath();
         context.fillStyle = "#00ff00";
         context.fillRect(j * titleSize, i * titleSize, titleSize, titleSize);
-      } else {
-        context.beginPath();
-        context.drawImage(pavement, j * titleSize, i * titleSize, titleSize, titleSize);
-      }
+      } //else {
+        //context.beginPath();
+        //context.drawImage(pavement, j * titleSize, i * titleSize, titleSize, titleSize);
+      //}
 
       collBox[i].push({
         x: j * titleSize,
@@ -65,23 +61,23 @@ function drawPlayer(x, y) {
 
 function move(x, y) {
   context.clearRect(0, 0, mapLength * titleSize, mapHeight * titleSize);
-  drawMap(map);
   drawPlayer(x, y);
+  drawMap(map);
 
   player.x = player.newX;
   player.y = player.newY;
 }
 
 let player = {
-  x: 50,
+  x: 0,
   y: 0,
   newX: 0,
   newY: 0,
 };
 
 function checkColl() {
-  for (let i = 0; i < mapHeight; i++) {
-    for (let j = 0; j < mapLength; j++) {
+  for (i = 0; i < mapHeight; i++) {
+    for (j = 0; j < mapLength; j++) {
       let b = collBox[i][j];
       if (player.newX === b.x && player.newY === b.y) {
           if(b.status === 1){
@@ -129,30 +125,6 @@ window.onkeydown = function (e) {
 
 window.onload = function () {
   drawMap(map);
-  drawPlayer(50, 0);
-}
-
-/* const game = new Game();
-
-const gameEventListener = (e) => {
-  const keyPressed = e.key;
-
-  const selectDirection = {
-    ArrowRight: () => game.animate('right'),
-    ArrowLeft: () => game.animate('left'),
-    ArrowUp: () => game.animate('up'),
-    ArrowDown: () => game.animate('down'),
-  };
-
-  const selectedAction = selectDirection[keyPressed];
-
-  if (selectedAction) {
-    selectedAction();
-  }
-};
-
-window.onload = () => {
-  game.start();
-  window.addEventListener('keydown', gameEventListener);
+  drawPlayer(0, 0);
 };
  */
